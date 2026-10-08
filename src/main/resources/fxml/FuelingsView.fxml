@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="cz.vojta.rocnikovka.controller.FuelingsController"
+      styleClass="vehicles-page">
+
+    <padding>
+        <Insets top="30"
+                right="35"
+                bottom="30"
+                left="35"/>
+    </padding>
+
+
+    <!-- horni cast -->
+
+    <HBox alignment="CENTER_LEFT"
+          spacing="20">
+
+        <VBox spacing="5"
+              HBox.hgrow="ALWAYS">
+
+            <Label text="Tankování"
+                   styleClass="page-title"/>
+
+            <Label text="Přehled tankování a výdajů za palivo"
+                   styleClass="page-subtitle"/>
+
+        </VBox>
+
+
+        <Button text="+  Přidat tankování"
+                styleClass="small-primary-button"/>
+
+    </HBox>
+
+
+    <!-- vyhledavani -->
+
+    <HBox spacing="10">
+
+        <TextField promptText="🔍  Hledat tankování..."
+                   styleClass="vehicle-search"
+                   HBox.hgrow="ALWAYS"/>
+
+    </HBox>
+
+
+    <!-- statistiky -->
+
+    <HBox spacing="15">
+
+        <VBox spacing="5"
+              HBox.hgrow="ALWAYS"
+              styleClass="stat-card">
+
+            <Label text="TANKOVÁNÍ"
+                   styleClass="stat-label"/>
+
+            <Label text="0"
+                   styleClass="stat-value"/>
+
+            <Label text="Celkem záznamů"
+                   styleClass="stat-description"/>
+
+        </VBox>
+
+
+        <VBox spacing="5"
+              HBox.hgrow="ALWAYS"
+              styleClass="stat-card">
+
+            <Label text="LITRY"
+                   styleClass="stat-label"/>
+
+            <Label text="0 l"
+                   styleClass="stat-value"/>
+
+            <Label text="Celkem natankováno"
+                   styleClass="stat-description"/>
+
+        </VBox>
+
+
+        <VBox spacing="5"
+              HBox.hgrow="ALWAYS"
+              styleClass="stat-card">
+
+            <Label text="NÁKLADY"
+                   styleClass="stat-label"/>
+
+            <Label text="0 Kč"
+                   styleClass="stat-value"/>
+
+            <Label text="Celkem za palivo"
+                   styleClass="stat-description"/>
+
+        </VBox>
+
+    </HBox>
+
+
+    <!-- seznam tankovani -->
+
+    <VBox spacing="12"
+          VBox.vgrow="ALWAYS">
+
+        <HBox alignment="CENTER_LEFT">
+
+            <Label text="Historie tankování"
+                   styleClass="section-title"/>
+
+        </HBox>
+
+
+        <!-- prazdny stav -->
+
+        <VBox alignment="CENTER"
+              spacing="12"
+              VBox.vgrow="ALWAYS"
+              styleClass="empty-state">
+
+            <Label text="⛽"
+                   styleClass="empty-icon"/>
+
+            <Label text="Zatím nemáte žádné tankování"
+                   styleClass="empty-title"/>
+
+            <Label text="Přidejte první záznam tankování a začněte sledovat&#10;spotřebu a náklady na palivo."
+                   styleClass="empty-description"/>
+
+            <Button text="+  Přidat první tankování"
+                    styleClass="empty-button"/>
+
+        </VBox>
+
+    </VBox>
+
+
+    <!-- spodni informace -->
+
+    <Label text="Vehicle Manager • Evidence tankování a výpočtu skutečné spotřeby"
+           styleClass="dashboard-hint"/>
+
+</VBox>

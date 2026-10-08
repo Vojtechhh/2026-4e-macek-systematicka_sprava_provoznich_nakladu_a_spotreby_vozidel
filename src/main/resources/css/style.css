@@ -1,0 +1,620 @@
+.root {
+    -fx-font-family: "Segoe UI";
+}
+
+
+/* hlavni pozadi */
+
+.login-background {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #0f172a,
+        #172554
+    );
+}
+
+
+/* horni branding */
+
+.top-brand {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.top-description {
+    -fx-font-size: 14px;
+    -fx-text-fill: #94a3b8;
+}
+
+
+/* prihlasovaci karta */
+
+.login-card {
+    -fx-background-color: rgba(30, 41, 59, 0.96);
+
+    -fx-background-radius: 18px;
+
+    -fx-border-color: #2563eb;
+    -fx-border-width: 1px;
+    -fx-border-radius: 18px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(0, 0, 0, 0.45),
+        30,
+        0.25,
+        0,
+        10
+    );
+}
+
+
+/* nadpis */
+
+.form-title {
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.form-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #94a3b8;
+}
+
+
+/* popisky */
+
+.input-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e2e8f0;
+}
+
+
+/* vstupni pole */
+
+.login-field {
+    -fx-pref-height: 48px;
+
+    -fx-font-size: 14px;
+
+    -fx-text-fill: white;
+
+    -fx-prompt-text-fill: #64748b;
+
+    -fx-background-color: #1e293b;
+
+    -fx-border-color: #475569;
+    -fx-border-width: 1px;
+    -fx-border-radius: 7px;
+
+    -fx-background-radius: 7px;
+
+    -fx-padding: 0 14px;
+}
+
+.login-field:hover {
+    -fx-border-color: #64748b;
+}
+
+.login-field:focused {
+    -fx-background-color: #1e293b;
+
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 2px;
+}
+
+
+/* tlacitko prihlasit */
+
+.login-button {
+    -fx-pref-height: 48px;
+
+    -fx-background-color: #2563eb;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 7px;
+
+    -fx-cursor: hand;
+}
+
+.login-button:hover {
+    -fx-background-color: #3b82f6;
+}
+
+.login-button:pressed {
+    -fx-background-color: #1d4ed8;
+}
+
+
+/* chybova zprava */
+
+.login-message {
+    -fx-font-size: 12px;
+    -fx-text-fill: #f87171;
+}
+
+
+/* registrace */
+
+.register-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: #94a3b8;
+}
+
+.register-button {
+    -fx-background-color: transparent;
+
+    -fx-text-fill: #60a5fa;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-cursor: hand;
+
+    -fx-padding: 0;
+}
+
+.register-button:hover {
+    -fx-text-fill: #93c5fd;
+}
+
+
+/* spodni branding */
+
+.bottom-watermark {
+    -fx-font-size: 11px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #64748b;
+}
+
+.copyright {
+    -fx-font-size: 11px;
+
+    -fx-text-fill: #475569;
+}
+
+
+/* ============================= */
+/* DASHBOARD */
+/* ============================= */
+
+
+/* hlavni pozadi */
+
+.dashboard-background {
+    -fx-background-color: #f1f5f9;
+}
+
+
+/* bocni panel */
+
+.sidebar {
+    -fx-background-color: #0f172a;
+}
+
+.sidebar-logo {
+    -fx-padding: 0 5px 0 5px;
+}
+
+.sidebar-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.sidebar-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+    -fx-padding: 5px 0 0 0;
+}
+
+
+/* nadpis menu */
+
+.menu-heading {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+    -fx-padding: 0 0 6px 5px;
+}
+
+
+/* navigacni tlacitka */
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-background-radius: 7px;
+
+    -fx-padding: 11px 14px;
+
+    -fx-cursor: hand;
+}
+
+.menu-button:hover {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: white;
+}
+
+.menu-button-active {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.menu-button-active:hover {
+    -fx-background-color: #3b82f6;
+}
+
+
+/* odhlaseni */
+
+.logout-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #64748b;
+
+    -fx-font-size: 13px;
+
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-padding: 11px 14px;
+
+    -fx-background-radius: 7px;
+
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #f87171;
+}
+
+
+/* hlavni obsah */
+
+.main-content {
+    -fx-background-color: #f1f5f9;
+}
+
+
+/* nadpis stranky */
+
+.page-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.page-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748b;
+}
+
+
+/* uzivatel */
+
+.user-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #94a3b8;
+}
+
+.user-name {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+
+/* statisticke karty */
+
+.stat-card {
+    -fx-background-color: white;
+
+    -fx-background-radius: 10px;
+
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+
+    -fx-padding: 18px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.06),
+        10,
+        0.1,
+        0,
+        2
+    );
+}
+
+.stat-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+}
+
+.stat-value {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+    -fx-padding: 5px 0 0 0;
+}
+
+.stat-description {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+}
+
+
+/* sekce */
+
+.section-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+
+/* obsahova karta */
+
+.content-card {
+    -fx-background-color: white;
+
+    -fx-background-radius: 10px;
+
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.05),
+        10,
+        0.1,
+        0,
+        2
+    );
+}
+
+
+/* radek vozidla */
+
+.vehicle-row {
+    -fx-padding: 17px 20px;
+
+    -fx-border-color: #f1f5f9;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.vehicle-row:hover {
+    -fx-background-color: #f8fafc;
+}
+
+.vehicle-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.vehicle-details {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+}
+
+.vehicle-consumption {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+
+/* sipka */
+
+.arrow-button {
+    -fx-background-color: #eff6ff;
+
+    -fx-text-fill: #2563eb;
+
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 6px;
+
+    -fx-padding: 5px 10px;
+
+    -fx-cursor: hand;
+}
+
+.arrow-button:hover {
+    -fx-background-color: #dbeafe;
+}
+
+
+/* male primarni tlacitko */
+
+.small-primary-button {
+    -fx-background-color: #2563eb;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 6px;
+
+    -fx-padding: 8px 13px;
+
+    -fx-cursor: hand;
+}
+
+.small-primary-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+
+/* aktivita */
+
+.activity-card {
+    -fx-background-color: white;
+
+    -fx-background-radius: 10px;
+
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+
+    -fx-padding: 17px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.05),
+        10,
+        0.1,
+        0,
+        2
+    );
+}
+
+.activity-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.activity-vehicle {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.activity-value {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+/* prazdny stav dashboardu */
+
+.empty-state {
+    -fx-background-color: white;
+
+    -fx-background-radius: 12px;
+
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+
+    -fx-padding: 40px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.05),
+        10,
+        0.1,
+        0,
+        2
+    );
+}
+
+.empty-icon {
+    -fx-font-size: 42px;
+}
+
+.empty-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.empty-description {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748b;
+    -fx-text-alignment: center;
+    -fx-line-spacing: 4px;
+}
+
+.empty-button {
+    -fx-background-color: #2563eb;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 7px;
+
+    -fx-padding: 11px 18px;
+
+    -fx-cursor: hand;
+}
+
+.empty-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.dashboard-hint {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* potvrzeni registrace */
+
+.success-toast {
+    -fx-background-color: #166534;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 8px;
+
+    -fx-padding: 12px 22px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(0, 0, 0, 0.25),
+        12,
+        0.15,
+        0,
+        4
+    );
+}
+
+/* stranka vozidel */
+
+.vehicles-page {
+    -fx-background-color: #f1f5f9;
+}
+
+.vehicle-search {
+    -fx-pref-height: 42px;
+    -fx-font-size: 13px;
+    -fx-text-fill: #0f172a;
+    -fx-prompt-text-fill: #94a3b8;
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 7px;
+    -fx-background-radius: 7px;
+    -fx-padding: 0 14px;
+}
+
+.vehicle-search:focused {
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 2px;
+}

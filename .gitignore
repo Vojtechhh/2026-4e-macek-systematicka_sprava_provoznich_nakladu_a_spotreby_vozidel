@@ -1,0 +1,19 @@
+# maven
+target/
+
+# java
+*.class
+
+# databaze
+*.db
+
+# ide
+.idea/
+*.iml
+
+# vscode lokalni nastaveni
+.vscode/
+
+# systemove soubory
+.DS_Store
+Thumbs.db

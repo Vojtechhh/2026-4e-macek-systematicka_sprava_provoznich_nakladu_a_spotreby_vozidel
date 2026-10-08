@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="cz.vojta.rocnikovka.controller.LoginController"
+           stylesheets="@../css/style.css"
+           styleClass="login-background">
+
+    <VBox alignment="CENTER"
+          spacing="22">
+
+        <!-- horni cast -->
+
+        <VBox alignment="CENTER"
+              spacing="5">
+
+            <Label text="VEHICLE MANAGER"
+                   styleClass="top-brand"/>
+
+            <Label text="Správa vozidel a provozních nákladů"
+                   styleClass="top-description"/>
+
+        </VBox>
+
+
+        <!-- prihlasovaci karta -->
+
+        <VBox prefWidth="560"
+              maxWidth="560"
+              spacing="18"
+              alignment="CENTER"
+              styleClass="login-card">
+
+            <padding>
+                <Insets top="42"
+                        right="55"
+                        bottom="42"
+                        left="55"/>
+            </padding>
+
+
+            <!-- nadpis prihlaseni -->
+
+            <VBox alignment="CENTER"
+                  spacing="6">
+
+                <Label text="Vítejte zpět"
+                       styleClass="form-title"/>
+
+                <Label text="Přihlaste se ke svému účtu"
+                       styleClass="form-subtitle"/>
+
+            </VBox>
+
+
+            <!-- uzivatelske jmeno -->
+
+            <VBox maxWidth="400"
+                  spacing="7">
+
+                <Label text="UŽIVATELSKÉ JMÉNO"
+                       styleClass="input-label"/>
+
+                <TextField fx:id="usernameField"
+                           promptText="Zadejte uživatelské jméno"
+                           styleClass="login-field"/>
+
+            </VBox>
+
+
+            <!-- heslo -->
+
+            <VBox maxWidth="400"
+                  spacing="7">
+
+                <Label text="HESLO"
+                       styleClass="input-label"/>
+
+                <PasswordField fx:id="passwordField"
+                               promptText="Zadejte heslo"
+                               styleClass="login-field"/>
+
+            </VBox>
+
+
+            <!-- tlacitko prihlasit -->
+
+            <Button text="PŘIHLÁSIT  →"
+                    onAction="#handleLogin"
+                    maxWidth="400"
+                    styleClass="login-button"/>
+
+
+            <!-- chybova zprava -->
+
+            <Label fx:id="messageLabel"
+                   styleClass="login-message"
+                   wrapText="true"/>
+
+
+            <!-- registrace -->
+
+            <HBox alignment="CENTER"
+                  spacing="6">
+
+                <Label text="Nemáte ještě účet?"
+                       styleClass="register-text"/>
+
+                <Button text="Zaregistrovat se"
+                        onAction="#handleOpenRegister"
+                        styleClass="register-button"/>
+
+            </HBox>
+
+        </VBox>
+
+
+        <!-- spodni cast -->
+
+        <VBox alignment="CENTER"
+              spacing="5">
+
+            <Label text="JEDNODUŠE   •   PŘEHLEDNĚ   •   EFEKTIVNĚ"
+                   styleClass="bottom-watermark"/>
+
+            <Label text="© 2026 Vehicle Manager"
+                   styleClass="copyright"/>
+
+        </VBox>
+
+    </VBox>
+
+</StackPane>

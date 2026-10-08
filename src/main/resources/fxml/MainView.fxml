@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cz.vojta.rocnikovka.controller.MainController"
+            stylesheets="@../css/style.css"
+            styleClass="dashboard-background">
+
+    <!-- levy panel -->
+
+    <left>
+
+        <VBox prefWidth="230"
+              spacing="20"
+              styleClass="sidebar">
+
+            <padding>
+                <Insets top="28"
+                        right="15"
+                        bottom="20"
+                        left="15"/>
+            </padding>
+
+
+            <!-- logo -->
+
+            <HBox alignment="CENTER_LEFT"
+                  spacing="5"
+                  styleClass="sidebar-logo">
+
+                <VBox spacing="3"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="VEHICLE"
+                           styleClass="sidebar-title"/>
+
+                    <Label text="MANAGER"
+                           styleClass="sidebar-title"/>
+
+                </VBox>
+
+
+                <ImageView fitWidth="70"
+                           fitHeight="70"
+                           preserveRatio="true">
+
+                    <image>
+                        <Image url="@../images/vehicle-manager-logo.png"/>
+                    </image>
+
+                </ImageView>
+
+            </HBox>
+
+
+            <Label text="SPRÁVA VOZIDEL"
+                   styleClass="sidebar-subtitle"/>
+
+
+            <!-- hlavni menu -->
+
+            <VBox spacing="5">
+
+                <Label text="HLAVNÍ MENU"
+                       styleClass="menu-heading"/>
+
+                <Button text="▣   Dashboard"
+                        maxWidth="Infinity"
+                        onAction="#handleDashboard"
+                        styleClass="menu-button menu-button-active"/>
+
+                <Button text="▣   Vozidla"
+                        maxWidth="Infinity"
+                        onAction="#handleVehicles"
+                        styleClass="menu-button"/>
+
+                <Button text="⛽   Tankování"
+                        maxWidth="Infinity"
+                        onAction="#handleFuelings"
+                        styleClass="menu-button"/>
+
+                <Button text="⚙   Servis"
+                        maxWidth="Infinity"
+                        styleClass="menu-button"/>
+
+                <Button text="▤   Náklady"
+                        maxWidth="Infinity"
+                        styleClass="menu-button"/>
+
+                <Button text="▥   Statistiky"
+                        maxWidth="Infinity"
+                        styleClass="menu-button"/>
+
+            </VBox>
+
+
+            <!-- spodni menu -->
+
+            <VBox spacing="5"
+                  VBox.vgrow="ALWAYS">
+
+            </VBox>
+
+
+            <VBox spacing="5">
+
+                <Button text="⚙   Nastavení"
+                        maxWidth="Infinity"
+                        styleClass="menu-button"/>
+
+                <Button text="↪   Odhlásit se"
+                        maxWidth="Infinity"
+                        onAction="#handleLogout"
+                        styleClass="logout-button"/>
+
+            </VBox>
+
+        </VBox>
+
+    </left>
+
+
+    <!-- hlavni obsah -->
+
+    <center>
+
+        <StackPane fx:id="contentArea">
+
+        </StackPane>
+
+    </center>
+
+</BorderPane>
