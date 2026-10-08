@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="cz.vojta.rocnikovka.controller.NakladyController"
+      styleClass="vehicles-page">
+
+    <padding>
+        <Insets top="30"
+                right="35"
+                bottom="30"
+                left="35"/>
+    </padding>
+
+    <!-- horni cast -->
+
+    <HBox alignment="CENTER_LEFT"
+          spacing="20">
+
+        <VBox spacing="5"
+              HBox.hgrow="ALWAYS">
+
+            <Label text="Náklady"
+                   styleClass="page-title"/>
+
+            <Label text="Přehled všech provozních nákladů vašich vozidel"
+                   styleClass="page-subtitle"/>
+
+        </VBox>
+
+        <Button text="+  Přidat náklad"
+                styleClass="small-primary-button"/>
+
+    </HBox>
+
+    <!-- vyhledavani -->
+
+    <HBox spacing="10">
+
+        <TextField promptText="🔍  Hledat náklad..."
+                   styleClass="vehicle-search"
+                   HBox.hgrow="ALWAYS"/>
+
+    </HBox>
+
+    <!-- statistiky -->
+
+    <HBox spacing="15">
+
+        <VBox spacing="5"
+              HBox.hgrow="ALWAYS"
+              styleClass="stat-card">
+
+            <Label text="CELKEM"
+                   styleClass="stat-label"/>
+
+            <Label text="0 Kč"
+                   styleClass="stat-value"/>
+
+            <Label text="Všechny náklady"
+                   styleClass="stat-description"/>
+
+        </VBox>
+
+        <VBox spacing="5"
+              HBox.hgrow="ALWAYS"
+              styleClass="stat-card">
+
+            <Label text="PALIVO"
+                   styleClass="stat-label"/>
+
+            <Label text="0 Kč"
+                   styleClass="stat-value"/>
+
+            <Label text="Náklady na palivo"
+                   styleClass="stat-description"/>
+
+        </VBox>
+
+        <VBox spacing="5"
+              HBox.hgrow="ALWAYS"
+              styleClass="stat-card">
+
+            <Label text="SERVIS"
+                   styleClass="stat-label"/>
+
+            <Label text="0 Kč"
+                   styleClass="stat-value"/>
+
+            <Label text="Náklady na servis"
+                   styleClass="stat-description"/>
+
+        </VBox>
+
+    </HBox>
+
+    <!-- seznam nakladu -->
+
+    <VBox spacing="12"
+          VBox.vgrow="ALWAYS">
+
+        <HBox alignment="CENTER_LEFT">
+
+            <Label text="Přehled nákladů"
+                   styleClass="section-title"/>
+
+        </HBox>
+
+        <!-- prazdny stav -->
+
+        <VBox alignment="CENTER"
+              spacing="12"
+              VBox.vgrow="ALWAYS"
+              styleClass="empty-state">
+
+            <Label text="💰"
+                   styleClass="empty-icon"/>
+
+            <Label text="Zatím nemáte žádné náklady"
+                   styleClass="empty-title"/>
+
+            <Label text="Po přidání tankování a servisních záznamů se zde&#10;zobrazí přehled všech provozních nákladů."
+                   styleClass="empty-description"/>
+
+            <Button text="+  Přidat první náklad"
+                    styleClass="empty-button"/>
+
+        </VBox>
+
+    </VBox>
+
+    <!-- spodni informace -->
+
+    <Label text="Vehicle Manager • Přehled provozních nákladů vozidel"
+           styleClass="dashboard-hint"/>
+
+</VBox>

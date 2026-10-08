@@ -3,6 +3,11 @@
 }
 
 
+/* ============================= */
+/* PRIHLASENI */
+/* ============================= */
+
+
 /* hlavni pozadi */
 
 .login-background {
@@ -195,14 +200,22 @@
 }
 
 
-/* bocni panel */
+/* ============================= */
+/* BOCNI PANEL */
+/* ============================= */
 
 .sidebar {
-    -fx-background-color: #0f172a;
+    -fx-background-color: #0b1220;
+
+    -fx-border-color: #1e293b;
+    -fx-border-width: 0 1px 0 0;
 }
 
+
+/* logo */
+
 .sidebar-logo {
-    -fx-padding: 0 5px 0 5px;
+    -fx-padding: 2px 5px 8px 5px;
 }
 
 .sidebar-title {
@@ -212,10 +225,17 @@
 }
 
 .sidebar-subtitle {
-    -fx-font-size: 12px;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
     -fx-text-fill: #64748b;
-    -fx-padding: 5px 0 0 0;
+
+    -fx-padding: 4px 0 2px 5px;
 }
+
+
+/* ============================= */
+/* HLAVNI MENU */
+/* ============================= */
 
 
 /* nadpis menu */
@@ -223,8 +243,10 @@
 .menu-heading {
     -fx-font-size: 10px;
     -fx-font-weight: bold;
-    -fx-text-fill: #64748b;
-    -fx-padding: 0 0 6px 5px;
+
+    -fx-text-fill: #475569;
+
+    -fx-padding: 4px 0 7px 8px;
 }
 
 
@@ -232,6 +254,7 @@
 
 .menu-button {
     -fx-background-color: transparent;
+
     -fx-text-fill: #94a3b8;
 
     -fx-font-size: 13px;
@@ -239,49 +262,137 @@
 
     -fx-alignment: CENTER_LEFT;
 
-    -fx-background-radius: 7px;
+    -fx-background-radius: 8px;
 
-    -fx-padding: 11px 14px;
+    -fx-padding: 12px 15px;
 
     -fx-cursor: hand;
+
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
+
+
+/* najeti mysi */
 
 .menu-button:hover {
-    -fx-background-color: #1e293b;
-    -fx-text-fill: white;
+    -fx-background-color: #172033;
+
+    -fx-text-fill: #f8fafc;
 }
+
+
+/* aktivni prvek */
 
 .menu-button-active {
-    -fx-background-color: #2563eb;
-    -fx-text-fill: white;
+    -fx-background-color: #172554;
+
+    -fx-text-fill: #60a5fa;
+
+    -fx-background-radius: 8px;
+
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+
+    -fx-effect: none;
 }
 
+
+/* aktivni prvek pri najeti */
+
 .menu-button-active:hover {
-    -fx-background-color: #3b82f6;
+    -fx-background-color: #1e3a8a;
+
+    -fx-text-fill: #93c5fd;
+
+    -fx-border-color: transparent;
 }
+
+
+/* aktivni prvek pri fokusu */
+
+.menu-button-active:focused {
+    -fx-background-color: #172554;
+
+    -fx-text-fill: #60a5fa;
+
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+
+    -fx-effect: none;
+}
+
+
+/* odstraneni fokusu u ostatnich tlacitek */
+
+.menu-button:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+
+/* stisknuti */
+
+.menu-button:pressed {
+    -fx-background-color: #1e3a8a;
+}
+
+
+/* ============================= */
+/* SPODNI MENU */
+/* ============================= */
 
 
 /* odhlaseni */
 
 .logout-button {
     -fx-background-color: transparent;
+
     -fx-text-fill: #64748b;
 
     -fx-font-size: 13px;
+    -fx-font-weight: bold;
 
     -fx-alignment: CENTER_LEFT;
 
-    -fx-padding: 11px 14px;
+    -fx-padding: 12px 15px;
 
-    -fx-background-radius: 7px;
+    -fx-background-radius: 8px;
 
     -fx-cursor: hand;
+
+    -fx-border-color: transparent;
+    -fx-border-width: 1px;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 
 .logout-button:hover {
-    -fx-background-color: #1e293b;
+    -fx-background-color: #2a1519;
+
     -fx-text-fill: #f87171;
+
+    -fx-border-color: #451a1a;
 }
+
+.logout-button:pressed {
+    -fx-background-color: #3b161b;
+}
+
+
+/* ============================= */
+/* HLAVNI OBSAH */
+/* ============================= */
 
 
 /* hlavni obsah */
@@ -319,7 +430,9 @@
 }
 
 
-/* statisticke karty */
+/* ============================= */
+/* STATISTICKE KARTY */
+/* ============================= */
 
 .stat-card {
     -fx-background-color: white;
@@ -352,6 +465,7 @@
     -fx-font-size: 25px;
     -fx-font-weight: bold;
     -fx-text-fill: #0f172a;
+
     -fx-padding: 5px 0 0 0;
 }
 
@@ -361,7 +475,9 @@
 }
 
 
-/* sekce */
+/* ============================= */
+/* SEKCE */
+/* ============================= */
 
 .section-title {
     -fx-font-size: 17px;
@@ -392,7 +508,9 @@
 }
 
 
-/* radek vozidla */
+/* ============================= */
+/* RADEK VOZIDLA */
+/* ============================= */
 
 .vehicle-row {
     -fx-padding: 17px 20px;
@@ -445,7 +563,9 @@
 }
 
 
-/* male primarni tlacitko */
+/* ============================= */
+/* MALA PRIMARNI TLACITKA */
+/* ============================= */
 
 .small-primary-button {
     -fx-background-color: #2563eb;
@@ -467,7 +587,9 @@
 }
 
 
-/* aktivita */
+/* ============================= */
+/* AKTIVITA */
+/* ============================= */
 
 .activity-card {
     -fx-background-color: white;
@@ -507,7 +629,10 @@
     -fx-text-fill: #64748b;
 }
 
-/* prazdny stav dashboardu */
+
+/* ============================= */
+/* PRAZDNY STAV DASHBOARDU */
+/* ============================= */
 
 .empty-state {
     -fx-background-color: white;
@@ -543,7 +668,9 @@
 .empty-description {
     -fx-font-size: 13px;
     -fx-text-fill: #64748b;
+
     -fx-text-alignment: center;
+
     -fx-line-spacing: 4px;
 }
 
@@ -571,7 +698,10 @@
     -fx-text-fill: #94a3b8;
 }
 
-/* potvrzeni registrace */
+
+/* ============================= */
+/* POTVRZENI REGISTRACE */
+/* ============================= */
 
 .success-toast {
     -fx-background-color: #166534;
@@ -595,7 +725,10 @@
     );
 }
 
-/* stranka vozidel */
+
+/* ============================= */
+/* STRANKA VOZIDEL */
+/* ============================= */
 
 .vehicles-page {
     -fx-background-color: #f1f5f9;
@@ -603,14 +736,21 @@
 
 .vehicle-search {
     -fx-pref-height: 42px;
+
     -fx-font-size: 13px;
+
     -fx-text-fill: #0f172a;
+
     -fx-prompt-text-fill: #94a3b8;
+
     -fx-background-color: white;
+
     -fx-border-color: #e2e8f0;
     -fx-border-width: 1px;
     -fx-border-radius: 7px;
+
     -fx-background-radius: 7px;
+
     -fx-padding: 0 14px;
 }
 

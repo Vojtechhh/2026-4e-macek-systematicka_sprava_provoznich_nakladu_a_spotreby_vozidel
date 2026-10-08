@@ -90,14 +90,17 @@
 
                 <Button text="⚙   Servis"
                         maxWidth="Infinity"
+                        onAction="#handleService"
                         styleClass="menu-button"/>
 
                 <Button text="▤   Náklady"
                         maxWidth="Infinity"
+                        onAction="#handleCosts"
                         styleClass="menu-button"/>
 
                 <Button text="▥   Statistiky"
                         maxWidth="Infinity"
+                        onAction="#handleStatistics"
                         styleClass="menu-button"/>
 
             </VBox>
@@ -115,6 +118,7 @@
 
                 <Button text="⚙   Nastavení"
                         maxWidth="Infinity"
+                        onAction="#handleSettings"
                         styleClass="menu-button"/>
 
                 <Button text="↪   Odhlásit se"
