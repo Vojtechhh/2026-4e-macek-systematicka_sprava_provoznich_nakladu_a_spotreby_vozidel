@@ -12,194 +12,93 @@ import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegisterController {
-
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private PasswordField confirmPasswordField;
-
-    @FXML
-    private Label messageLabel;
-
+    @FXML private TextField usernameField;
+    @FXML private PasswordField passwordField;
+    @FXML private PasswordField confirmPasswordField;
+    @FXML private Label messageLabel;
 
     @FXML
     private void handleRegister() {
-
         String username = usernameField.getText().trim();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
-
-
-        // kontrola prazdnych poli
-
-        if (username.isEmpty() ||
-                password.isEmpty() ||
-                confirmPassword.isEmpty()) {
-
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             messageLabel.setText("Vyplňte všechna pole.");
             return;
         }
-
-
-        // kontrola hesel
-
         if (!password.equals(confirmPassword)) {
-
             messageLabel.setText("Hesla se neshodují.");
             return;
         }
-
-
-        // kontrola delky hesla
-
         if (password.length() < 6) {
-
-            messageLabel.setText(
-                    "Heslo musí mít alespoň 6 znaků."
-            );
-
+            messageLabel.setText("Heslo musí mít alespoň 6 znaků.");
             return;
         }
-
-
-        // ulozeni uzivatele do databaze
-
-        String sql = """
-                INSERT INTO users (username, password)
-                VALUES (?, ?)
-                """;
-
-
+        String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
         try (Connection connection = Database.connect();
-             PreparedStatement statement =
-                     connection.prepareStatement(sql)) {
-
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, username);
             statement.setString(2, password);
-
             statement.executeUpdate();
-
-
-            // ucet byl vytvoren
-
-            openDashboard(username);
-
-
+            int userId = findUserId(connection, username);
+            if (userId <= 0) {
+                messageLabel.setText("Účet byl vytvořen, ale nepodařilo se načíst jeho ID.");
+                return;
+            }
+            openDashboard(userId, username);
         } catch (SQLException e) {
-
-            if (e.getMessage().contains("UNIQUE")) {
-
-                messageLabel.setStyle(
-                        "-fx-text-fill: #f87171;"
-                );
-
-                messageLabel.setText(
-                        "Toto uživatelské jméno již existuje."
-                );
-
+            if (e.getMessage() != null && e.getMessage().contains("UNIQUE")) {
+                messageLabel.setStyle("-fx-text-fill: #f87171;");
+                messageLabel.setText("Toto uživatelské jméno již existuje.");
             } else {
-
-                messageLabel.setStyle(
-                        "-fx-text-fill: #f87171;"
-                );
-
-                messageLabel.setText(
-                        "Při registraci nastala chyba."
-                );
-
+                messageLabel.setStyle("-fx-text-fill: #f87171;");
+                messageLabel.setText("Při registraci nastala chyba.");
                 e.printStackTrace();
             }
         }
     }
 
+    private int findUserId(Connection connection, String username) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT id FROM users WHERE username = ?")) {
+            statement.setString(1, username);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                return resultSet.next() ? resultSet.getInt("id") : -1;
+            }
+        }
+    }
 
-    // otevreni dashboardu po registraci
-
-    private void openDashboard(String username) {
-
+    private void openDashboard(int userId, String username) {
         try {
-
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "/fxml/MainView.fxml"
-                    )
-            );
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
             Parent root = loader.load();
-
-
-            // predani uzivatelskeho jmena dashboardu
-
-            MainController mainController =
-                    loader.getController();
-
+            MainController mainController = loader.getController();
+            mainController.setUserId(userId);
             mainController.setUsername(username);
             mainController.openDashboard();
-
-
-            // zobrazeni potvrzeni o uspesne registraci
-
             mainController.showRegistrationSuccess();
-
-
-            Stage stage =
-                    (Stage) usernameField.getScene().getWindow();
-
-            Scene scene =
-                    new Scene(root, 1200, 750);
-
+            Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.setTitle("Vehicle Manager");
-
-            stage.setScene(scene);
-
+            stage.setScene(new Scene(root, 1200, 750));
             stage.centerOnScreen();
-
-
         } catch (Exception e) {
-
             e.printStackTrace();
         }
     }
 
-
-    // navrat na prihlaseni
-
     @FXML
     private void handleBackToLogin() {
-
         try {
-
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "/fxml/LoginView.fxml"
-                    )
-            );
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginView.fxml"));
             Parent root = loader.load();
-
-            Stage stage =
-                    (Stage) usernameField.getScene().getWindow();
-
-            Scene scene =
-                    new Scene(root, 1100, 700);
-
-            stage.setTitle(
-                    "Vehicle Manager - Přihlášení"
-            );
-
-            stage.setScene(scene);
-
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.setTitle("Vehicle Manager - Přihlášení");
+            stage.setScene(new Scene(root, 1100, 700));
             stage.centerOnScreen();
-
         } catch (Exception e) {
-
             e.printStackTrace();
         }
     }

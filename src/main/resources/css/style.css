@@ -758,3 +758,162 @@
     -fx-border-color: #3b82f6;
     -fx-border-width: 2px;
 }
+
+
+
+/* ============================= */
+/* DETAIL VOZIDLA */
+/* ============================= */
+
+.vehicle-detail-dialog {
+    -fx-background-color: #f1f5f9;
+    -fx-font-family: "Segoe UI";
+}
+
+.vehicle-detail-dialog > .content {
+    -fx-background-color: #f1f5f9;
+}
+
+.vehicle-detail-dialog > .button-bar {
+    -fx-background-color: white;
+    -fx-padding: 12px 18px;
+}
+
+.vehicle-detail-dialog > .button-bar > .container {
+    -fx-background-color: white;
+}
+
+.vehicle-detail-dialog .button {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12px;
+    -fx-background-radius: 7px;
+    -fx-padding: 9px 16px;
+    -fx-cursor: hand;
+}
+
+.vehicle-detail-dialog .button:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.vehicle-detail-edit-button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.vehicle-detail-edit-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.vehicle-detail-content {
+    -fx-background-color: #f1f5f9;
+}
+
+.vehicle-detail-heading {
+    -fx-padding: 2px 4px 5px 4px;
+}
+
+.vehicle-detail-title {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.vehicle-detail-badge {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1d4ed8;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 7px;
+    -fx-padding: 7px 11px;
+}
+
+.vehicle-detail-body {
+    -fx-alignment: top-left;
+}
+
+.vehicle-detail-card,
+.vehicle-detail-section {
+    -fx-background-color: white;
+    -fx-background-radius: 11px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 11px;
+    -fx-padding: 16px;
+}
+
+.vehicle-photo-frame {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 8px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8px;
+    -fx-padding: 8px;
+}
+
+.vehicle-no-photo {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 15px;
+    -fx-text-fill: #64748b;
+    -fx-text-alignment: center;
+}
+
+.vehicle-detail-section-icon {
+    -fx-font-size: 18px;
+    -fx-text-fill: #2563eb;
+    -fx-font-weight: bold;
+}
+
+.vehicle-detail-section-title {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.vehicle-detail-grid {
+    -fx-background-color: transparent;
+}
+
+.vehicle-detail-label {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.vehicle-detail-value {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12px;
+    -fx-text-fill: #0f172a;
+}
+
+.vehicle-detail-notes {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 7px;
+    -fx-padding: 12px;
+    -fx-min-height: 45px;
+}
+
+.vehicle-detail-scroll {
+    -fx-background-color: #f1f5f9;
+    -fx-background: #f1f5f9;
+    -fx-border-color: transparent;
+}
+
+.vehicle-detail-scroll > .viewport {
+    -fx-background-color: #f1f5f9;
+}
+
+.vehicle-detail-scroll > .corner {
+    -fx-background-color: #f1f5f9;
+}
+.vehicle-overview-item {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-padding: 12px;
+    -fx-min-width: 120px;
+}

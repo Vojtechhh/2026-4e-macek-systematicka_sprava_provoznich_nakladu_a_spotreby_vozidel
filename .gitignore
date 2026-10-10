@@ -17,3 +17,5 @@ target/
 # systemove soubory
 .DS_Store
 Thumbs.db
+
+vehicle_photos/
