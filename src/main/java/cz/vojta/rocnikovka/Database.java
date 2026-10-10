@@ -40,10 +40,20 @@ public class Database {
                     user_id INTEGER REFERENCES users(id)
                 )
                 """;
+        String sharesSql = """
+                CREATE TABLE IF NOT EXISTS vehicle_shares (
+                    vehicle_id INTEGER NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
+                    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                    granted_by INTEGER NOT NULL REFERENCES users(id),
+                    PRIMARY KEY (vehicle_id, user_id)
+                )
+                """;
         try (Connection connection = connect();
              Statement statement = connection.createStatement()) {
+            statement.execute("PRAGMA foreign_keys = ON");
             statement.execute(usersSql);
             statement.execute(vehiclesSql);
+            statement.execute(sharesSql);
             addColumnIfMissing(connection, "photo_path", "TEXT");
             addColumnIfMissing(connection, "engine", "TEXT");
             addColumnIfMissing(connection, "fuel_type", "TEXT");

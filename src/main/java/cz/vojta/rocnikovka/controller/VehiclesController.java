@@ -117,12 +117,17 @@ public class VehiclesController {
                 "Upravit údaje",
                 ButtonBar.ButtonData.LEFT
         );
+        ButtonType shareButton = new ButtonType(
+                "Sdílet vozidlo",
+                ButtonBar.ButtonData.LEFT
+        );
         ButtonType deleteButton = new ButtonType(
                 "Smazat vozidlo",
                 ButtonBar.ButtonData.LEFT
         );
         dialog.getDialogPane().getButtonTypes().addAll(
                 editButton,
+                shareButton,
                 deleteButton,
                 ButtonType.CLOSE
         );
@@ -302,8 +307,18 @@ public class VehiclesController {
         dialog.showAndWait().ifPresent(result -> {
             if (result == editButton) {
                 showVehicleEditor(vehicle);
+            } else if (result == shareButton) {
+                manageVehicleSharing(vehicle);
             } else if (result == deleteButton) {
-                confirmDeleteVehicle(vehicle);
+                if (isVehicleOwner(vehicle.getId())) {
+                    confirmDeleteVehicle(vehicle);
+                } else {
+                    showAlert(
+                            Alert.AlertType.WARNING,
+                            "Nelze smazat vozidlo",
+                            "Sdílené vozidlo může smazat pouze jeho vlastník."
+                    );
+                }
             }
         });
     }
@@ -346,6 +361,148 @@ public class VehiclesController {
             error.showAndWait();
         }
     }
+    // sprava pristupu ke sdilenemu vozidlu
+    private void manageVehicleSharing(Vehicle vehicle) {
+        if (!isVehicleOwner(vehicle.getId())) {
+            showAlert(
+                    Alert.AlertType.WARNING,
+                    "Sdílení vozidla",
+                    "Přístup k vozidlu může spravovat pouze jeho vlastník."
+            );
+            return;
+        }
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Sdílení vozidla");
+        dialog.setHeaderText("Přístup k vozidlu " + vehicle.getBrand() + " " + vehicle.getModel());
+
+        ButtonType addButton = new ButtonType("Přidat přístup", ButtonBar.ButtonData.LEFT);
+        ButtonType removeButton = new ButtonType("Odebrat přístup", ButtonBar.ButtonData.LEFT);
+        dialog.getDialogPane().getButtonTypes().addAll(addButton, removeButton, ButtonType.CLOSE);
+
+        TextField usernameField = new TextField();
+        usernameField.setPromptText("Uživatelské jméno");
+        Label currentShares = new Label(getSharedUsernames(vehicle.getId()));
+        currentShares.setWrapText(true);
+        VBox content = new VBox(12,
+                new Label("Zadej uživatelské jméno registrovaného účtu:"),
+                usernameField,
+                new Label("Aktuálně sdíleno s:"),
+                currentShares);
+        content.setPadding(new Insets(16));
+        content.setPrefWidth(420);
+        dialog.getDialogPane().setContent(content);
+
+        dialog.showAndWait().ifPresent(result -> {
+            String targetUsername = usernameField.getText() == null
+                    ? "" : usernameField.getText().trim();
+
+            if (result == addButton) {
+                if (targetUsername.isBlank()) {
+                    showAlert(Alert.AlertType.WARNING, "Chybí uživatel", "Zadej uživatelské jméno.");
+                    return;
+                }
+                shareVehicleWithUsername(vehicle.getId(), targetUsername);
+            } else if (result == removeButton) {
+                if (targetUsername.isBlank()) {
+                    showAlert(Alert.AlertType.WARNING, "Chybí uživatel", "Zadej uživatelské jméno, kterému chceš přístup odebrat.");
+                    return;
+                }
+                removeVehicleShare(vehicle.getId(), targetUsername);
+            }
+        });
+    }
+
+    private boolean isVehicleOwner(int vehicleId) {
+        String sql = "SELECT 1 FROM vehicles WHERE id = ? AND user_id = ?";
+        try (Connection connection = Database.connect();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, vehicleId);
+            statement.setInt(2, userId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                return resultSet.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private String getSharedUsernames(int vehicleId) {
+        String sql = """
+                SELECT users.username
+                FROM vehicle_shares
+                JOIN users ON users.id = vehicle_shares.user_id
+                WHERE vehicle_shares.vehicle_id = ?
+                ORDER BY users.username
+                """;
+        StringBuilder names = new StringBuilder();
+        try (Connection connection = Database.connect();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, vehicleId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    if (names.length() > 0) names.append(", ");
+                    names.append(resultSet.getString("username"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return names.length() == 0 ? "Zatím není sdíleno s žádným uživatelem." : names.toString();
+    }
+
+    private void shareVehicleWithUsername(int vehicleId, String targetUsername) {
+        String lookupSql = "SELECT id FROM users WHERE username = ?";
+        String insertSql = "INSERT OR IGNORE INTO vehicle_shares (vehicle_id, user_id, granted_by) VALUES (?, ?, ?)";
+        try (Connection connection = Database.connect();
+             PreparedStatement lookup = connection.prepareStatement(lookupSql)) {
+            lookup.setString(1, targetUsername);
+            int targetUserId;
+            try (ResultSet resultSet = lookup.executeQuery()) {
+                if (!resultSet.next()) {
+                    showAlert(Alert.AlertType.WARNING, "Uživatel nenalezen", "Účet s tímto uživatelským jménem neexistuje.");
+                    return;
+                }
+                targetUserId = resultSet.getInt("id");
+            }
+            if (targetUserId == userId) {
+                showAlert(Alert.AlertType.WARNING, "Neplatný uživatel", "Vlastník už k vozidlu přístup má.");
+                return;
+            }
+            try (PreparedStatement insert = connection.prepareStatement(insertSql)) {
+                insert.setInt(1, vehicleId);
+                insert.setInt(2, targetUserId);
+                insert.setInt(3, userId);
+                int inserted = insert.executeUpdate();
+                showAlert(Alert.AlertType.INFORMATION, "Sdílení vozidla",
+                        inserted > 0 ? "Uživatel získal přístup k vozidlu." : "Tento uživatel už přístup má.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Chyba databáze", "Přístup se nepodařilo přidat: " + e.getMessage());
+        }
+    }
+
+    private void removeVehicleShare(int vehicleId, String targetUsername) {
+        String sql = """
+                DELETE FROM vehicle_shares
+                WHERE vehicle_id = ?
+                  AND user_id = (SELECT id FROM users WHERE username = ?)
+                """;
+        try (Connection connection = Database.connect();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, vehicleId);
+            statement.setString(2, targetUsername);
+            int removed = statement.executeUpdate();
+            showAlert(Alert.AlertType.INFORMATION, "Sdílení vozidla",
+                    removed > 0 ? "Přístup byl odebrán." : "Tento uživatel neměl k vozidlu přístup.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Chyba databáze", "Přístup se nepodařilo odebrat: " + e.getMessage());
+        }
+    }
+
     // vytvoreni sekce detailu
     private VBox createDetailSection(
             String icon,
@@ -727,7 +884,10 @@ public class VehiclesController {
                 SET brand = ?, model = ?, registration = ?, year = ?,
                     odometer = ?, photo_path = ?, engine = ?, fuel_type = ?,
                     vin = ?, color = ?, notes = ?
-                WHERE id = ? AND user_id = ?
+                WHERE id = ?
+                  AND (user_id = ? OR id IN (
+                      SELECT vehicle_id FROM vehicle_shares WHERE user_id = ?
+                  ))
                 """;
         try (Connection connection = Database.connect();
              PreparedStatement statement =
@@ -735,6 +895,7 @@ public class VehiclesController {
             fillStatement(statement, vehicle, photoPath);
             statement.setInt(12, vehicle.getId());
             statement.setInt(13, userId);
+            statement.setInt(14, userId);
             int updated = statement.executeUpdate();
             if (updated == 0) {
                 showAlert(Alert.AlertType.WARNING, "Změna nebyla provedena", "Vozidlo nepatří přihlášenému uživateli.");
@@ -807,6 +968,9 @@ public class VehiclesController {
                        photo_path, engine, fuel_type, vin, color, notes
                 FROM vehicles
                 WHERE user_id = ?
+                   OR id IN (
+                       SELECT vehicle_id FROM vehicle_shares WHERE user_id = ?
+                   )
                 ORDER BY id DESC
                 """;
         try (Connection connection = Database.connect();
@@ -816,6 +980,7 @@ public class VehiclesController {
                 return;
             }
             statement.setInt(1, userId);
+            statement.setInt(2, userId);
             try (ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 vehicles.add(new Vehicle(
