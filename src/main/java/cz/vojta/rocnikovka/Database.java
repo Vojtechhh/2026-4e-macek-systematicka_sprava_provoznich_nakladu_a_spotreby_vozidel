@@ -12,7 +12,11 @@ public class Database {
     private static final String LEGACY_OWNER_USERNAME = "test_user1";
 
     public static Connection connect() throws SQLException {
-        return DriverManager.getConnection(URL);
+        Connection connection = DriverManager.getConnection(URL);
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("PRAGMA foreign_keys = ON");
+        }
+        return connection;
     }
 
     public static void initialize() {
@@ -48,19 +52,42 @@ public class Database {
                     PRIMARY KEY (vehicle_id, user_id)
                 )
                 """;
+        String serviceSql = """
+                CREATE TABLE IF NOT EXISTS services (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    vehicle_id INTEGER NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
+                    title TEXT NOT NULL,
+                    service_type TEXT NOT NULL,
+                    description TEXT,
+                    status TEXT NOT NULL DEFAULT 'Plánováno',
+                    planned_start TEXT,
+                    planned_end TEXT,
+                    started_date TEXT,
+                    expected_completion TEXT,
+                    completed_date TEXT,
+                    odometer INTEGER,
+                    labor_cost REAL NOT NULL DEFAULT 0,
+                    parts_cost REAL NOT NULL DEFAULT 0,
+                    total_cost REAL NOT NULL DEFAULT 0,
+                    workshop TEXT,
+                    notes TEXT,
+                    created_by INTEGER REFERENCES users(id)
+                )
+                """;
+
         try (Connection connection = connect();
              Statement statement = connection.createStatement()) {
-            statement.execute("PRAGMA foreign_keys = ON");
             statement.execute(usersSql);
             statement.execute(vehiclesSql);
             statement.execute(sharesSql);
-            addColumnIfMissing(connection, "photo_path", "TEXT");
-            addColumnIfMissing(connection, "engine", "TEXT");
-            addColumnIfMissing(connection, "fuel_type", "TEXT");
-            addColumnIfMissing(connection, "vin", "TEXT");
-            addColumnIfMissing(connection, "color", "TEXT");
-            addColumnIfMissing(connection, "notes", "TEXT");
-            addColumnIfMissing(connection, "user_id", "INTEGER REFERENCES users(id)");
+            statement.execute(serviceSql);
+            addVehicleColumnIfMissing(connection, "photo_path", "TEXT");
+            addVehicleColumnIfMissing(connection, "engine", "TEXT");
+            addVehicleColumnIfMissing(connection, "fuel_type", "TEXT");
+            addVehicleColumnIfMissing(connection, "vin", "TEXT");
+            addVehicleColumnIfMissing(connection, "color", "TEXT");
+            addVehicleColumnIfMissing(connection, "notes", "TEXT");
+            addVehicleColumnIfMissing(connection, "user_id", "INTEGER REFERENCES users(id)");
             assignLegacyVehicles(connection);
             System.out.println("Databáze byla připravena.");
         } catch (SQLException e) {
@@ -85,7 +112,8 @@ public class Database {
         }
     }
 
-    private static void addColumnIfMissing(Connection connection, String columnName, String columnType) throws SQLException {
+    private static void addVehicleColumnIfMissing(Connection connection, String columnName, String columnType)
+            throws SQLException {
         boolean exists = false;
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery("PRAGMA table_info(vehicles)")) {

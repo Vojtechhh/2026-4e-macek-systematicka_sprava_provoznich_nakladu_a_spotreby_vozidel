@@ -4,140 +4,69 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="cz.vojta.rocnikovka.controller.ServisController"
-      styleClass="vehicles-page">
-
+      styleClass="vehicles-page" spacing="18">
     <padding>
-        <Insets top="30"
-                right="35"
-                bottom="30"
-                left="35"/>
+        <Insets top="30" right="35" bottom="30" left="35"/>
     </padding>
 
-    <!-- horni cast -->
-
-    <HBox alignment="CENTER_LEFT"
-          spacing="20">
-
-        <VBox spacing="5"
-              HBox.hgrow="ALWAYS">
-
-            <Label text="Servis"
-                   styleClass="page-title"/>
-
-            <Label text="Přehled servisních zásahů a nákladů na údržbu vozidel"
-                   styleClass="page-subtitle"/>
-
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Servis" styleClass="page-title"/>
+            <Label text="Přehled servisních zásahů, plánování a nákladů" styleClass="page-subtitle"/>
         </VBox>
-
-        <Button text="+  Přidat servis"
-                styleClass="small-primary-button"/>
-
+        <Button text="+ Přidat servis" onAction="#handleAddService" styleClass="small-primary-button"/>
     </HBox>
 
-    <!-- vyhledavani -->
-
-    <HBox spacing="10">
-
-        <TextField promptText="🔍  Hledat servis..."
-                   styleClass="vehicle-search"
-                   HBox.hgrow="ALWAYS"/>
-
-    </HBox>
-
-    <!-- statistiky -->
+    <TextField fx:id="searchField" promptText="Hledat servis, vozidlo nebo servis..." styleClass="vehicle-search"/>
 
     <HBox spacing="15">
-
-        <VBox spacing="5"
-              HBox.hgrow="ALWAYS"
-              styleClass="stat-card">
-
-            <Label text="SERVIS"
-                   styleClass="stat-label"/>
-
-            <Label text="0"
-                   styleClass="stat-value"/>
-
-            <Label text="Celkem zásahů"
-                   styleClass="stat-description"/>
-
+        <VBox spacing="5" HBox.hgrow="ALWAYS" styleClass="stat-card">
+            <Label text="SERVIS" styleClass="stat-label"/>
+            <Label fx:id="countLabel" text="0" styleClass="stat-value"/>
+            <Label text="Celkem záznamů" styleClass="stat-description"/>
         </VBox>
-
-        <VBox spacing="5"
-              HBox.hgrow="ALWAYS"
-              styleClass="stat-card">
-
-            <Label text="NÁKLADY"
-                   styleClass="stat-label"/>
-
-            <Label text="0 Kč"
-                   styleClass="stat-value"/>
-
-            <Label text="Celkem za servis"
-                   styleClass="stat-description"/>
-
+        <VBox spacing="5" HBox.hgrow="ALWAYS" styleClass="stat-card">
+            <Label text="NÁKLADY" styleClass="stat-label"/>
+            <Label fx:id="costLabel" text="0 Kč" styleClass="stat-value"/>
+            <Label text="Celkové náklady" styleClass="stat-description"/>
         </VBox>
-
-        <VBox spacing="5"
-              HBox.hgrow="ALWAYS"
-              styleClass="stat-card">
-
-            <Label text="POSLEDNÍ SERVIS"
-                   styleClass="stat-label"/>
-
-            <Label text="—"
-                   styleClass="stat-value"/>
-
-            <Label text="Datum posledního zásahu"
-                   styleClass="stat-description"/>
-
+        <VBox spacing="5" HBox.hgrow="ALWAYS" styleClass="stat-card">
+            <Label text="PROBÍHÁ" styleClass="stat-label"/>
+            <Label fx:id="ongoingLabel" text="0" styleClass="stat-value"/>
+            <Label text="Aktuálně probíhající servisy" styleClass="stat-description"/>
         </VBox>
-
+        <VBox spacing="5" HBox.hgrow="ALWAYS" styleClass="stat-card">
+            <Label text="PLÁNOVÁNO" styleClass="stat-label"/>
+            <Label fx:id="plannedLabel" text="0" styleClass="stat-value"/>
+            <Label text="Plánované zásahy" styleClass="stat-description"/>
+        </VBox>
     </HBox>
 
-    <!-- seznam servisu -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="Historie a plán servisu" styleClass="section-title" HBox.hgrow="ALWAYS"/>
+        <Button text="Detail / upravit" onAction="#handleEditService"/>
+        <Button text="Smazat" onAction="#handleDeleteService"/>
+    </HBox>
 
-    <VBox spacing="12"
-          VBox.vgrow="ALWAYS">
-
-        <HBox alignment="CENTER_LEFT">
-
-            <Label text="Historie servisu"
-                   styleClass="section-title"/>
-
-        </HBox>
-
-        <!-- prazdny stav -->
-
-        <VBox alignment="CENTER"
-              spacing="12"
-              VBox.vgrow="ALWAYS"
-              styleClass="empty-state">
-
-            <Label text="🔧"
-                   styleClass="empty-icon"/>
-
-            <Label text="Zatím nemáte žádný servisní záznam"
-                   styleClass="empty-title"/>
-
-            <Label text="Přidejte první servisní záznam a začněte sledovat&#10;údržbu vozidel a náklady na servis."
-                   styleClass="empty-description"/>
-
-            <Button text="+  Přidat první servis"
-                    styleClass="empty-button"/>
-
-        </VBox>
-
-    </VBox>
-
-    <!-- spodni informace -->
-
-    <Label text="Vehicle Manager • Evidence servisních zásahů a nákladů na údržbu"
-           styleClass="dashboard-hint"/>
-
+    <TableView fx:id="servicesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="titleColumn" text="Servisní úkon" prefWidth="190"/>
+            <TableColumn fx:id="vehicleColumn" text="Vozidlo" prefWidth="155"/>
+            <TableColumn fx:id="statusColumn" text="Stav" prefWidth="105"/>
+            <TableColumn fx:id="startColumn" text="Začátek / plán" prefWidth="125"/>
+            <TableColumn fx:id="expectedColumn" text="Očekávané dokončení" prefWidth="155"/>
+            <TableColumn fx:id="odometerColumn" text="Tachometr" prefWidth="100"/>
+            <TableColumn fx:id="costColumn" text="Cena" prefWidth="100"/>
+        </columns>
+        <placeholder><Label text="Zatím nemáte žádné servisní záznamy. Přidejte první servis."/></placeholder>
+    </TableView>
+    <Label text="Dvojklikem otevřeš detail servisního záznamu." styleClass="dashboard-hint"/>
 </VBox>
