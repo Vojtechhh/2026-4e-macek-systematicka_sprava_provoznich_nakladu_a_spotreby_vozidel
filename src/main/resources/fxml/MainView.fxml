@@ -16,9 +16,7 @@
             styleClass="dashboard-background">
 
     <!-- levy panel -->
-
     <left>
-
         <VBox prefWidth="230"
               spacing="20"
               styleClass="sidebar">
@@ -30,53 +28,40 @@
                         left="15"/>
             </padding>
 
-
             <!-- logo -->
-
             <HBox alignment="CENTER_LEFT"
                   spacing="5"
                   styleClass="sidebar-logo">
 
                 <VBox spacing="3"
                       HBox.hgrow="ALWAYS">
-
                     <Label text="VEHICLE"
                            styleClass="sidebar-title"/>
-
                     <Label text="MANAGER"
                            styleClass="sidebar-title"/>
-
                 </VBox>
-
 
                 <ImageView fitWidth="70"
                            fitHeight="70"
                            preserveRatio="true">
-
                     <image>
                         <Image url="@../images/vehicle-manager-logo.png"/>
                     </image>
-
                 </ImageView>
-
             </HBox>
-
 
             <Label text="SPRÁVA VOZIDEL"
                    styleClass="sidebar-subtitle"/>
 
-
             <!-- hlavni menu -->
-
             <VBox spacing="5">
-
                 <Label text="HLAVNÍ MENU"
                        styleClass="menu-heading"/>
 
-                <Button text="▣   Dashboard"
+                <Button text="▤   Dashboard"
                         maxWidth="Infinity"
                         onAction="#handleDashboard"
-                        styleClass="menu-button menu-button-active"/>
+                        styleClass="menu-button"/>
 
                 <Button text="▣   Vozidla"
                         maxWidth="Infinity"
@@ -102,20 +87,14 @@
                         maxWidth="Infinity"
                         onAction="#handleStatistics"
                         styleClass="menu-button"/>
-
             </VBox>
-
 
             <!-- spodni menu -->
-
             <VBox spacing="5"
                   VBox.vgrow="ALWAYS">
-
             </VBox>
 
-
             <VBox spacing="5">
-
                 <Button text="⚙   Nastavení"
                         maxWidth="Infinity"
                         onAction="#handleSettings"
@@ -125,22 +104,14 @@
                         maxWidth="Infinity"
                         onAction="#handleLogout"
                         styleClass="logout-button"/>
-
             </VBox>
-
         </VBox>
-
     </left>
 
-
     <!-- hlavni obsah -->
-
     <center>
-
         <StackPane fx:id="contentArea">
-
         </StackPane>
-
     </center>
 
 </BorderPane>

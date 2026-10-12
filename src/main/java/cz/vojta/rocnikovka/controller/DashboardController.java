@@ -2,6 +2,7 @@ package cz.vojta.rocnikovka.controller;
 
 import cz.vojta.rocnikovka.Database;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -156,6 +157,7 @@ public class DashboardController {
             try (ResultSet result = statement.executeQuery()) {
                 while (result.next()) {
                     vehicles.add(new VehicleCard(
+                            result.getInt("id"),
                             result.getString("brand"),
                             result.getString("model"),
                             result.getString("registration"),
@@ -249,6 +251,14 @@ public class DashboardController {
             card.getStyleClass().add("stat-card");
             card.setMaxWidth(Double.MAX_VALUE);
 
+            // dvojklikem otevri sekci vozidel v hlavnim menu
+            card.setCursor(Cursor.HAND);
+            card.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && onAddVehicle != null) {
+                    onAddVehicle.run();
+                }
+            });
+
             vehiclesContainer.getChildren().add(card);
         }
     }
@@ -289,6 +299,7 @@ public class DashboardController {
 
     private static class VehicleCard {
 
+        private final int id;
         private final String brand;
         private final String model;
         private final String registration;
@@ -296,12 +307,14 @@ public class DashboardController {
         private final String odometer;
 
         private VehicleCard(
+                int id,
                 String brand,
                 String model,
                 String registration,
                 String year,
                 String odometer
         ) {
+            this.id = id;
             this.brand = brand;
             this.model = model;
             this.registration = registration;

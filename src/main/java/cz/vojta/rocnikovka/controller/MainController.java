@@ -184,9 +184,14 @@ public class MainController {
     @FXML
     private void handleSettings() {
         try {
-            Parent view = FXMLLoader.load(
+            FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/fxml/NastaveniView.fxml")
             );
+
+            Parent view = loader.load();
+
+            NastaveniController controller = loader.getController();
+            controller.setUserId(userId);
 
             contentArea.getChildren().setAll(view);
 

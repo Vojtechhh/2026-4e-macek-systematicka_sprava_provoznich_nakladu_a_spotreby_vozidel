@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -17,74 +19,65 @@
         <Insets top="30" right="35" bottom="30" left="35"/>
     </padding>
 
-    <!-- horni cast stranky -->
     <HBox alignment="CENTER_LEFT" spacing="20">
         <VBox spacing="5" HBox.hgrow="ALWAYS">
             <Label text="Vozidla" styleClass="page-title"/>
             <Label text="Správa vašich vozidel a jejich základních údajů"
                    styleClass="page-subtitle"/>
         </VBox>
-
-        <Button text="+ Přidat vozidlo"
+        <Button text="+  Přidat vozidlo"
                 onAction="#handleAddVehicle"
-                styleClass="small-primary-button"/>
+                styleClass="small-primary-button vehicle-add-button"/>
     </HBox>
 
-    <!-- vyhledavani -->
-    <TextField fx:id="searchField"
-               promptText="Hledat podle značky, modelu nebo SPZ..."
-               styleClass="vehicle-search"/>
+    <VBox spacing="8" styleClass="vehicle-toolbar-card">
+        <Label text="Vyhledávání vozidel" styleClass="vehicle-toolbar-title"/>
+        <TextField fx:id="searchField"
+                   promptText="Značka, model nebo registrační značka..."
+                   styleClass="vehicle-search"/>
+        <Label text="Vyhledávání se aktualizuje automaticky při psaní."
+               styleClass="vehicle-toolbar-hint"/>
+    </VBox>
 
-    <!-- seznam vozidel -->
-    <VBox spacing="15" VBox.vgrow="ALWAYS">
-        <HBox alignment="CENTER_LEFT">
-            <Label text="Moje vozidla" styleClass="section-title"/>
+    <VBox spacing="14" styleClass="vehicle-list-section">
+        <HBox alignment="CENTER_LEFT" spacing="12" styleClass="vehicle-list-heading">
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Moje vozidla" styleClass="section-title"/>
+                <Label text="Přehled evidovaných vozidel" styleClass="vehicle-list-subtitle"/>
+            </VBox>
             <Label fx:id="vehicleCountLabel"
                    text="0 vozidel"
-                   styleClass="page-subtitle"
-                   HBox.hgrow="ALWAYS"/>
+                   styleClass="vehicle-count-badge"/>
         </HBox>
 
-        <!-- zobrazi se, kdyz nejsou zadna vozidla -->
         <VBox fx:id="emptyState"
               alignment="CENTER"
               spacing="12"
               VBox.vgrow="ALWAYS"
-              styleClass="empty-state">
-
-            <Label text="🚗" styleClass="empty-icon"/>
-            <Label text="Zatím nemáte žádná vozidla"
-                   styleClass="empty-title"/>
+              styleClass="empty-state vehicle-empty-state">
+            <Label text="🚘" styleClass="empty-icon"/>
+            <Label text="Zatím nemáte žádná vozidla" styleClass="empty-title"/>
             <Label text="Přidejte své první vozidlo a začněte sledovat jeho&#10;spotřebu, tankování, servis a provozní náklady."
-                   styleClass="empty-description"/>
-
-            <Button text="+ Přidat první vozidlo"
+                   styleClass="empty-description"
+                   wrapText="true"/>
+            <Button text="+  Přidat první vozidlo"
                     onAction="#handleAddVehicle"
                     styleClass="empty-button"/>
         </VBox>
 
-        <!-- tabulka se zobrazi po pridani vozidla -->
         <TableView fx:id="vehiclesTable"
-                     VBox.vgrow="ALWAYS"
-                     visible="false"
-                     managed="false">
-
+                   visible="false"
+                   managed="false"
+                   styleClass="vehicles-table">
+            <placeholder>
+                <Label text="Žádná vozidla neodpovídají vyhledávání."
+                       styleClass="table-placeholder"/>
+            </placeholder>
             <columns>
-                <TableColumn fx:id="brandColumn"
-                             text="Značka"
-                             prefWidth="130"/>
-                <TableColumn fx:id="modelColumn"
-                             text="Model"
-                             prefWidth="160"/>
-                <TableColumn fx:id="registrationColumn"
-                             text="SPZ"
-                             prefWidth="110"/>
-                <TableColumn fx:id="yearColumn"
-                             text="Rok výroby"
-                             prefWidth="100"/>
-                <TableColumn fx:id="odometerColumn"
-                             text="Tachometr (km)"
-                             prefWidth="130"/>
+                <TableColumn fx:id="brandColumn" text="Vozidlo" prefWidth="280" minWidth="230"/>
+                <TableColumn fx:id="registrationColumn" text="SPZ" prefWidth="160" minWidth="125"/>
+                <TableColumn fx:id="yearColumn" text="Rok výroby" prefWidth="150" minWidth="120"/>
+                <TableColumn fx:id="odometerColumn" text="Tachometr (km)" prefWidth="180" minWidth="145"/>
             </columns>
         </TableView>
     </VBox>

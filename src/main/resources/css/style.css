@@ -1,86 +1,119 @@
 .root {
+
     -fx-font-family: "Segoe UI";
+
 }
 
-
 /* ============================= */
+
 /* PRIHLASENI */
-/* ============================= */
 
+/* ============================= */
 
 /* hlavni pozadi */
 
 .login-background {
-    -fx-background-color: linear-gradient(
-        to bottom right,
-        #0f172a,
-        #172554
-    );
-}
 
+    -fx-background-color: linear-gradient(
+
+        to bottom right,
+
+        #0f172a,
+
+        #172554
+
+    );
+
+}
 
 /* horni branding */
 
 .top-brand {
+
     -fx-font-size: 30px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: white;
+
 }
 
 .top-description {
-    -fx-font-size: 14px;
-    -fx-text-fill: #94a3b8;
-}
 
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #94a3b8;
+
+}
 
 /* prihlasovaci karta */
 
 .login-card {
+
     -fx-background-color: rgba(30, 41, 59, 0.96);
 
     -fx-background-radius: 18px;
 
     -fx-border-color: #2563eb;
+
     -fx-border-width: 1px;
+
     -fx-border-radius: 18px;
 
     -fx-effect: dropshadow(
-        gaussian,
-        rgba(0, 0, 0, 0.45),
-        30,
-        0.25,
-        0,
-        10
-    );
-}
 
+        gaussian,
+
+        rgba(0, 0, 0, 0.45),
+
+        30,
+
+        0.25,
+
+        0,
+
+        10
+
+    );
+
+}
 
 /* nadpis */
 
 .form-title {
+
     -fx-font-size: 27px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: white;
+
 }
 
 .form-subtitle {
-    -fx-font-size: 14px;
-    -fx-text-fill: #94a3b8;
-}
 
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #94a3b8;
+
+}
 
 /* popisky */
 
 .input-label {
-    -fx-font-size: 11px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #e2e8f0;
-}
 
+    -fx-font-size: 11px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #e2e8f0;
+
+}
 
 /* vstupni pole */
 
 .login-field {
+
     -fx-pref-height: 48px;
 
     -fx-font-size: 14px;
@@ -92,29 +125,37 @@
     -fx-background-color: #1e293b;
 
     -fx-border-color: #475569;
+
     -fx-border-width: 1px;
+
     -fx-border-radius: 7px;
 
     -fx-background-radius: 7px;
 
     -fx-padding: 0 14px;
+
 }
 
 .login-field:hover {
+
     -fx-border-color: #64748b;
+
 }
 
 .login-field:focused {
+
     -fx-background-color: #1e293b;
 
     -fx-border-color: #3b82f6;
-    -fx-border-width: 2px;
-}
 
+    -fx-border-width: 2px;
+
+}
 
 /* tlacitko prihlasit */
 
 .login-button {
+
     -fx-pref-height: 48px;
 
     -fx-background-color: #2563eb;
@@ -122,142 +163,179 @@
     -fx-text-fill: white;
 
     -fx-font-size: 14px;
+
     -fx-font-weight: bold;
 
     -fx-background-radius: 7px;
 
     -fx-cursor: hand;
+
 }
 
 .login-button:hover {
+
     -fx-background-color: #3b82f6;
+
 }
 
 .login-button:pressed {
-    -fx-background-color: #1d4ed8;
-}
 
+    -fx-background-color: #1d4ed8;
+
+}
 
 /* chybova zprava */
 
 .login-message {
-    -fx-font-size: 12px;
-    -fx-text-fill: #f87171;
-}
 
+    -fx-font-size: 12px;
+
+    -fx-text-fill: #f87171;
+
+}
 
 /* registrace */
 
 .register-text {
+
     -fx-font-size: 13px;
+
     -fx-text-fill: #94a3b8;
+
 }
 
 .register-button {
+
     -fx-background-color: transparent;
 
     -fx-text-fill: #60a5fa;
 
     -fx-font-size: 13px;
+
     -fx-font-weight: bold;
 
     -fx-cursor: hand;
 
     -fx-padding: 0;
+
 }
 
 .register-button:hover {
-    -fx-text-fill: #93c5fd;
-}
 
+    -fx-text-fill: #93c5fd;
+
+}
 
 /* spodni branding */
 
 .bottom-watermark {
+
     -fx-font-size: 11px;
 
     -fx-font-weight: bold;
 
     -fx-text-fill: #64748b;
+
 }
 
 .copyright {
+
     -fx-font-size: 11px;
 
     -fx-text-fill: #475569;
+
 }
 
-
 /* ============================= */
+
 /* DASHBOARD */
-/* ============================= */
 
+/* ============================= */
 
 /* hlavni pozadi */
 
 .dashboard-background {
+
     -fx-background-color: #f1f5f9;
+
 }
 
-
 /* ============================= */
+
 /* BOCNI PANEL */
+
 /* ============================= */
 
 .sidebar {
+
     -fx-background-color: #0b1220;
 
     -fx-border-color: #1e293b;
-    -fx-border-width: 0 1px 0 0;
-}
 
+    -fx-border-width: 0 1px 0 0;
+
+}
 
 /* logo */
 
 .sidebar-logo {
+
     -fx-padding: 2px 5px 8px 5px;
+
 }
 
 .sidebar-title {
+
     -fx-font-size: 22px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: white;
+
 }
 
 .sidebar-subtitle {
+
     -fx-font-size: 11px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #64748b;
 
     -fx-padding: 4px 0 2px 5px;
+
 }
 
-
 /* ============================= */
+
 /* HLAVNI MENU */
-/* ============================= */
 
+/* ============================= */
 
 /* nadpis menu */
 
 .menu-heading {
+
     -fx-font-size: 10px;
+
     -fx-font-weight: bold;
 
     -fx-text-fill: #475569;
 
     -fx-padding: 4px 0 7px 8px;
-}
 
+}
 
 /* navigacni tlacitka */
 
 .menu-button {
+
     -fx-background-color: transparent;
 
     -fx-text-fill: #94a3b8;
 
     -fx-font-size: 13px;
+
     -fx-font-weight: bold;
 
     -fx-alignment: CENTER_LEFT;
@@ -269,25 +347,29 @@
     -fx-cursor: hand;
 
     -fx-border-color: transparent;
+
     -fx-border-width: 0;
 
     -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-}
 
+    -fx-faint-focus-color: transparent;
+
+}
 
 /* najeti mysi */
 
 .menu-button:hover {
+
     -fx-background-color: #172033;
 
     -fx-text-fill: #f8fafc;
-}
 
+}
 
 /* aktivni prvek */
 
 .menu-button-active {
+
     -fx-background-color: #172554;
 
     -fx-text-fill: #60a5fa;
@@ -295,71 +377,83 @@
     -fx-background-radius: 8px;
 
     -fx-border-color: transparent;
+
     -fx-border-width: 0;
 
     -fx-focus-color: transparent;
+
     -fx-faint-focus-color: transparent;
 
     -fx-effect: none;
-}
 
+}
 
 /* aktivni prvek pri najeti */
 
 .menu-button-active:hover {
+
     -fx-background-color: #1e3a8a;
 
     -fx-text-fill: #93c5fd;
 
     -fx-border-color: transparent;
-}
 
+}
 
 /* aktivni prvek pri fokusu */
 
 .menu-button-active:focused {
+
     -fx-background-color: #172554;
 
     -fx-text-fill: #60a5fa;
 
     -fx-border-color: transparent;
+
     -fx-border-width: 0;
 
     -fx-focus-color: transparent;
+
     -fx-faint-focus-color: transparent;
 
     -fx-effect: none;
-}
 
+}
 
 /* odstraneni fokusu u ostatnich tlacitek */
 
 .menu-button:focused {
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-}
 
+    -fx-focus-color: transparent;
+
+    -fx-faint-focus-color: transparent;
+
+}
 
 /* stisknuti */
 
 .menu-button:pressed {
+
     -fx-background-color: #1e3a8a;
+
 }
 
-
 /* ============================= */
+
 /* SPODNI MENU */
-/* ============================= */
 
+/* ============================= */
 
 /* odhlaseni */
 
 .logout-button {
+
     -fx-background-color: transparent;
 
     -fx-text-fill: #64748b;
 
     -fx-font-size: 13px;
+
     -fx-font-weight: bold;
 
     -fx-alignment: CENTER_LEFT;
@@ -371,184 +465,261 @@
     -fx-cursor: hand;
 
     -fx-border-color: transparent;
+
     -fx-border-width: 1px;
 
     -fx-focus-color: transparent;
+
     -fx-faint-focus-color: transparent;
+
 }
 
 .logout-button:hover {
+
     -fx-background-color: #2a1519;
 
     -fx-text-fill: #f87171;
 
     -fx-border-color: #451a1a;
+
 }
 
 .logout-button:pressed {
+
     -fx-background-color: #3b161b;
+
 }
 
-
 /* ============================= */
+
 /* HLAVNI OBSAH */
-/* ============================= */
 
+/* ============================= */
 
 /* hlavni obsah */
 
 .main-content {
-    -fx-background-color: #f1f5f9;
-}
 
+    -fx-background-color: #f1f5f9;
+
+}
 
 /* nadpis stranky */
 
 .page-title {
+
     -fx-font-size: 28px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #0f172a;
+
 }
 
 .page-subtitle {
-    -fx-font-size: 13px;
-    -fx-text-fill: #64748b;
-}
 
+    -fx-font-size: 13px;
+
+    -fx-text-fill: #64748b;
+
+}
 
 /* uzivatel */
 
 .user-label {
+
     -fx-font-size: 10px;
+
     -fx-text-fill: #94a3b8;
+
 }
 
 .user-name {
+
     -fx-font-size: 13px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #0f172a;
+
 }
 
-
 /* ============================= */
+
 /* STATISTICKE KARTY */
+
 /* ============================= */
 
 .stat-card {
+
     -fx-background-color: white;
 
     -fx-background-radius: 10px;
 
     -fx-border-color: #e2e8f0;
+
     -fx-border-width: 1px;
+
     -fx-border-radius: 10px;
 
     -fx-padding: 18px;
 
     -fx-effect: dropshadow(
+
         gaussian,
+
         rgba(15, 23, 42, 0.06),
+
         10,
+
         0.1,
+
         0,
+
         2
+
     );
+
 }
 
 .stat-label {
+
     -fx-font-size: 10px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #64748b;
+
 }
 
 .stat-value {
+
     -fx-font-size: 25px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #0f172a;
 
     -fx-padding: 5px 0 0 0;
+
 }
 
 .stat-description {
+
     -fx-font-size: 11px;
+
     -fx-text-fill: #94a3b8;
+
 }
 
-
 /* ============================= */
+
 /* SEKCE */
+
 /* ============================= */
 
 .section-title {
-    -fx-font-size: 17px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #0f172a;
-}
 
+    -fx-font-size: 17px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #0f172a;
+
+}
 
 /* obsahova karta */
 
 .content-card {
+
     -fx-background-color: white;
 
     -fx-background-radius: 10px;
 
     -fx-border-color: #e2e8f0;
+
     -fx-border-width: 1px;
+
     -fx-border-radius: 10px;
 
     -fx-effect: dropshadow(
+
         gaussian,
+
         rgba(15, 23, 42, 0.05),
+
         10,
+
         0.1,
+
         0,
+
         2
+
     );
+
 }
 
-
 /* ============================= */
+
 /* RADEK VOZIDLA */
+
 /* ============================= */
 
 .vehicle-row {
+
     -fx-padding: 17px 20px;
 
     -fx-border-color: #f1f5f9;
+
     -fx-border-width: 0 0 1px 0;
+
 }
 
 .vehicle-row:hover {
+
     -fx-background-color: #f8fafc;
+
 }
 
 .vehicle-name {
+
     -fx-font-size: 14px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #0f172a;
+
 }
 
 .vehicle-details {
+
     -fx-font-size: 11px;
+
     -fx-text-fill: #94a3b8;
+
 }
 
 .vehicle-consumption {
-    -fx-font-size: 13px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2563eb;
-}
 
+    -fx-font-size: 13px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #2563eb;
+
+}
 
 /* sipka */
 
 .arrow-button {
+
     -fx-background-color: #eff6ff;
 
     -fx-text-fill: #2563eb;
 
     -fx-font-size: 16px;
+
     -fx-font-weight: bold;
 
     -fx-background-radius: 6px;
@@ -556,23 +727,29 @@
     -fx-padding: 5px 10px;
 
     -fx-cursor: hand;
+
 }
 
 .arrow-button:hover {
+
     -fx-background-color: #dbeafe;
+
 }
 
-
 /* ============================= */
+
 /* MALA PRIMARNI TLACITKA */
+
 /* ============================= */
 
 .small-primary-button {
+
     -fx-background-color: #2563eb;
 
     -fx-text-fill: white;
 
     -fx-font-size: 12px;
+
     -fx-font-weight: bold;
 
     -fx-background-radius: 6px;
@@ -580,106 +757,155 @@
     -fx-padding: 8px 13px;
 
     -fx-cursor: hand;
+
 }
 
 .small-primary-button:hover {
+
     -fx-background-color: #1d4ed8;
+
 }
 
-
 /* ============================= */
+
 /* AKTIVITA */
+
 /* ============================= */
 
 .activity-card {
+
     -fx-background-color: white;
 
     -fx-background-radius: 10px;
 
     -fx-border-color: #e2e8f0;
+
     -fx-border-width: 1px;
+
     -fx-border-radius: 10px;
 
     -fx-padding: 17px;
 
     -fx-effect: dropshadow(
+
         gaussian,
+
         rgba(15, 23, 42, 0.05),
+
         10,
+
         0.1,
+
         0,
+
         2
+
     );
+
 }
 
 .activity-title {
+
     -fx-font-size: 12px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #2563eb;
+
 }
 
 .activity-vehicle {
+
     -fx-font-size: 13px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #0f172a;
+
 }
 
 .activity-value {
+
     -fx-font-size: 11px;
+
     -fx-text-fill: #64748b;
+
 }
 
-
 /* ============================= */
+
 /* PRAZDNY STAV DASHBOARDU */
+
 /* ============================= */
 
 .empty-state {
+
     -fx-background-color: white;
 
     -fx-background-radius: 12px;
 
     -fx-border-color: #e2e8f0;
+
     -fx-border-width: 1px;
+
     -fx-border-radius: 12px;
 
     -fx-padding: 40px;
 
     -fx-effect: dropshadow(
+
         gaussian,
+
         rgba(15, 23, 42, 0.05),
+
         10,
+
         0.1,
+
         0,
+
         2
+
     );
+
 }
 
 .empty-icon {
+
     -fx-font-size: 42px;
+
 }
 
 .empty-title {
+
     -fx-font-size: 20px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #0f172a;
+
 }
 
 .empty-description {
+
     -fx-font-size: 13px;
+
     -fx-text-fill: #64748b;
 
     -fx-text-alignment: center;
 
     -fx-line-spacing: 4px;
+
 }
 
 .empty-button {
+
     -fx-background-color: #2563eb;
 
     -fx-text-fill: white;
 
     -fx-font-size: 13px;
+
     -fx-font-weight: bold;
 
     -fx-background-radius: 7px;
@@ -687,28 +913,37 @@
     -fx-padding: 11px 18px;
 
     -fx-cursor: hand;
+
 }
 
 .empty-button:hover {
+
     -fx-background-color: #1d4ed8;
+
 }
 
 .dashboard-hint {
+
     -fx-font-size: 11px;
+
     -fx-text-fill: #94a3b8;
+
 }
 
-
 /* ============================= */
+
 /* POTVRZENI REGISTRACE */
+
 /* ============================= */
 
 .success-toast {
+
     -fx-background-color: #166534;
 
     -fx-text-fill: white;
 
     -fx-font-size: 13px;
+
     -fx-font-weight: bold;
 
     -fx-background-radius: 8px;
@@ -716,25 +951,37 @@
     -fx-padding: 12px 22px;
 
     -fx-effect: dropshadow(
+
         gaussian,
+
         rgba(0, 0, 0, 0.25),
+
         12,
+
         0.15,
+
         0,
+
         4
+
     );
+
 }
 
-
 /* ============================= */
+
 /* STRANKA VOZIDEL */
+
 /* ============================= */
 
 .vehicles-page {
+
     -fx-background-color: #f1f5f9;
+
 }
 
 .vehicle-search {
+
     -fx-pref-height: 42px;
 
     -fx-font-size: 13px;
@@ -746,174 +993,574 @@
     -fx-background-color: white;
 
     -fx-border-color: #e2e8f0;
+
     -fx-border-width: 1px;
+
     -fx-border-radius: 7px;
 
     -fx-background-radius: 7px;
 
     -fx-padding: 0 14px;
+
 }
 
 .vehicle-search:focused {
+
     -fx-border-color: #3b82f6;
+
     -fx-border-width: 2px;
+
 }
 
-
-
 /* ============================= */
+
 /* DETAIL VOZIDLA */
+
 /* ============================= */
 
 .vehicle-detail-dialog {
+
     -fx-background-color: #f1f5f9;
+
     -fx-font-family: "Segoe UI";
+
 }
 
 .vehicle-detail-dialog > .content {
+
     -fx-background-color: #f1f5f9;
+
 }
 
 .vehicle-detail-dialog > .button-bar {
+
     -fx-background-color: white;
+
     -fx-padding: 12px 18px;
+
 }
 
 .vehicle-detail-dialog > .button-bar > .container {
+
     -fx-background-color: white;
+
 }
 
 .vehicle-detail-dialog .button {
+
     -fx-font-family: "Segoe UI";
+
     -fx-font-size: 12px;
+
     -fx-background-radius: 7px;
+
     -fx-padding: 9px 16px;
+
     -fx-cursor: hand;
+
 }
 
 .vehicle-detail-dialog .button:focused {
+
     -fx-focus-color: transparent;
+
     -fx-faint-focus-color: transparent;
+
 }
 
 .vehicle-detail-edit-button {
+
     -fx-background-color: #2563eb;
+
     -fx-text-fill: white;
+
     -fx-font-weight: bold;
+
 }
 
 .vehicle-detail-edit-button:hover {
+
     -fx-background-color: #1d4ed8;
+
 }
 
 .vehicle-detail-content {
+
     -fx-background-color: #f1f5f9;
+
 }
 
 .vehicle-detail-heading {
+
     -fx-padding: 2px 4px 5px 4px;
+
 }
 
 .vehicle-detail-title {
+
     -fx-font-family: "Segoe UI";
+
     -fx-font-size: 25px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #0f172a;
+
 }
 
 .vehicle-detail-badge {
+
     -fx-background-color: #dbeafe;
+
     -fx-text-fill: #1d4ed8;
+
     -fx-font-size: 12px;
+
     -fx-font-weight: bold;
+
     -fx-background-radius: 7px;
+
     -fx-padding: 7px 11px;
+
 }
 
 .vehicle-detail-body {
+
     -fx-alignment: top-left;
+
 }
 
 .vehicle-detail-card,
+
 .vehicle-detail-section {
+
     -fx-background-color: white;
+
     -fx-background-radius: 11px;
+
     -fx-border-color: #e2e8f0;
+
     -fx-border-width: 1px;
+
     -fx-border-radius: 11px;
+
     -fx-padding: 16px;
+
 }
 
 .vehicle-photo-frame {
+
     -fx-background-color: #f1f5f9;
+
     -fx-background-radius: 8px;
+
     -fx-border-color: #e2e8f0;
+
     -fx-border-radius: 8px;
+
     -fx-padding: 8px;
+
 }
 
 .vehicle-no-photo {
+
     -fx-font-family: "Segoe UI";
+
     -fx-font-size: 15px;
+
     -fx-text-fill: #64748b;
+
     -fx-text-alignment: center;
+
 }
 
 .vehicle-detail-section-icon {
+
     -fx-font-size: 18px;
+
     -fx-text-fill: #2563eb;
+
     -fx-font-weight: bold;
+
 }
 
 .vehicle-detail-section-title {
+
     -fx-font-family: "Segoe UI";
+
     -fx-font-size: 15px;
+
     -fx-font-weight: bold;
+
     -fx-text-fill: #0f172a;
+
 }
 
 .vehicle-detail-grid {
+
     -fx-background-color: transparent;
+
 }
 
 .vehicle-detail-label {
+
     -fx-font-family: "Segoe UI";
+
     -fx-font-size: 12px;
+
     -fx-text-fill: #64748b;
+
 }
 
 .vehicle-detail-value {
+
     -fx-font-family: "Segoe UI";
+
     -fx-font-size: 12px;
+
     -fx-text-fill: #0f172a;
+
 }
 
 .vehicle-detail-notes {
+
     -fx-font-family: "Segoe UI";
+
     -fx-font-size: 12px;
+
     -fx-text-fill: #64748b;
+
     -fx-background-color: #f8fafc;
+
     -fx-background-radius: 7px;
+
     -fx-padding: 12px;
+
     -fx-min-height: 45px;
+
 }
 
 .vehicle-detail-scroll {
+
     -fx-background-color: #f1f5f9;
+
     -fx-background: #f1f5f9;
+
     -fx-border-color: transparent;
+
 }
 
 .vehicle-detail-scroll > .viewport {
+
     -fx-background-color: #f1f5f9;
+
 }
 
 .vehicle-detail-scroll > .corner {
+
     -fx-background-color: #f1f5f9;
+
 }
+
 .vehicle-overview-item {
+
     -fx-background-color: #f8fafc;
+
     -fx-background-radius: 8px;
+
     -fx-padding: 12px;
+
     -fx-min-width: 120px;
+
+}
+
+/* profesionalni vzhled sekce vozidel */
+
+.vehicle-toolbar-card {
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 12px;
+
+    -fx-border-color: #e2e8f0;
+
+    -fx-border-width: 1px;
+
+    -fx-border-radius: 12px;
+
+    -fx-padding: 16px 18px;
+
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.045), 12, 0.08, 0, 3);
+
+}
+
+.vehicle-toolbar-title {
+
+    -fx-font-size: 12px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #334155;
+
+}
+
+.vehicle-toolbar-hint {
+
+    -fx-font-size: 11px;
+
+    -fx-text-fill: #94a3b8;
+
+}
+
+.vehicle-search {
+
+    -fx-pref-height: 44px;
+
+    -fx-font-size: 13px;
+
+    -fx-background-radius: 8px;
+
+    -fx-border-radius: 8px;
+
+}
+
+.vehicle-search:focused {
+
+    -fx-border-color: #3b82f6;
+
+    -fx-border-width: 1.5px;
+
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.10), 7, 0.1, 0, 1);
+
+}
+
+.vehicle-add-button {
+
+    -fx-padding: 10px 16px;
+
+    -fx-background-radius: 8px;
+
+}
+
+.vehicle-list-section {
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 12px;
+
+    -fx-border-color: #e2e8f0;
+
+    -fx-border-width: 1px;
+
+    -fx-border-radius: 12px;
+
+    -fx-padding: 20px;
+
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.045), 12, 0.08, 0, 3);
+
+}
+
+.vehicle-list-heading {
+
+    -fx-padding: 0 0 12px 0;
+
+    -fx-border-color: transparent transparent #e8eef5 transparent;
+
+    -fx-border-width: 0 0 1px 0;
+
+}
+
+.vehicle-list-subtitle {
+
+    -fx-font-size: 11px;
+
+    -fx-text-fill: #94a3b8;
+
+}
+
+.vehicle-count-badge {
+
+    -fx-background-color: #eff6ff;
+
+    -fx-text-fill: #1d4ed8;
+
+    -fx-font-size: 11px;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 16px;
+
+    -fx-padding: 7px 12px;
+
+}
+
+.vehicles-table {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-padding: 0;
+    -fx-table-cell-border-color: #edf1f5;
+    -fx-selection-bar: #dbeafe;
+    -fx-selection-bar-non-focused: #eff6ff;
+    -fx-fixed-cell-size: 76px;
+}
+
+.vehicles-table .column-header-background {
+
+    -fx-background-color: #f8fafc;
+
+    -fx-background-radius: 8px 8px 0 0;
+
+}
+
+.vehicles-table .column-header,
+
+.vehicles-table .filler {
+
+    -fx-background-color: #f8fafc;
+
+    -fx-size: 42px;
+
+    -fx-border-color: transparent transparent #e2e8f0 transparent;
+
+    -fx-border-width: 0 0 1px 0;
+
+}
+
+.vehicles-table .column-header .label {
+
+    -fx-text-fill: #475569;
+
+    -fx-font-size: 11px;
+
+    -fx-font-weight: bold;
+
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-padding: 0 12px;
+
+}
+
+.vehicles-table .table-row-cell {
+
+    -fx-background-color: white;
+
+    -fx-cell-size: 43px;
+
+    -fx-border-color: transparent transparent #f1f5f9 transparent;
+
+    -fx-border-width: 0 0 1px 0;
+
+}
+
+.vehicles-table .table-row-cell:odd {
+
+    -fx-background-color: #fbfdff;
+
+}
+
+.vehicles-table .table-row-cell:hover {
+
+    -fx-background-color: #f1f7ff;
+
+}
+
+.vehicles-table .table-row-cell:selected {
+
+    -fx-background-color: #eaf2ff;
+
+}
+
+.vehicles-table .table-cell {
+
+    -fx-text-fill: #334155;
+
+    -fx-font-size: 12px;
+
+    -fx-padding: 0 12px;
+
+    -fx-border-color: transparent;
+
+}
+
+.vehicles-table .virtual-flow,
+
+.vehicles-table .clipped-container,
+
+.vehicles-table .sheet {
+
+    -fx-background-color: white;
+
+}
+
+.table-placeholder {
+
+    -fx-font-size: 12px;
+
+    -fx-text-fill: #94a3b8;
+
+}
+
+.vehicle-empty-state {
+
+    -fx-effect: none;
+
+    -fx-border-style: dashed;
+
+    -fx-border-color: #dbe4ef;
+
+    -fx-min-height: 280px;
+
+}
+
+/* nahledove fotografie a svisle zarovnani v seznamu vozidel */
+.vehicles-table .table-row-cell {
+    -fx-cell-size: 76px;
+    -fx-background-insets: 0;
+    -fx-border-color: transparent transparent #edf2f7 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.vehicles-table .table-cell {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 4px 14px;
+    -fx-border-color: transparent;
+}
+
+.vehicles-table .table-row-cell:odd {
+    -fx-background-color: #fbfdff;
+}
+
+.vehicles-table .table-row-cell:hover {
+    -fx-background-color: #f1f7ff;
+}
+
+.vehicles-table .table-row-cell:selected {
+    -fx-background-color: #eaf2ff;
+}
+
+.vehicles-table .table-row-cell:empty {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+.vehicle-brand-label {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.vehicle-model-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+}
+
+.vehicle-thumbnail-frame {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 7px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
 }
