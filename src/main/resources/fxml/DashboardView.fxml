@@ -6,149 +6,71 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="cz.vojta.rocnikovka.controller.DashboardController"
       styleClass="main-content">
-      
+
     <padding>
-        <Insets top="30"
-                right="35"
-                bottom="30"
-                left="35"/>
+        <Insets top="30" right="35" bottom="30" left="35"/>
     </padding>
 
-
-    <!-- horni cast -->
-
-    <HBox alignment="CENTER_LEFT">
-
-        <VBox spacing="5"
-              HBox.hgrow="ALWAYS">
-
-            <Label text="Dashboard"
-                   styleClass="page-title"/>
-
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Dashboard" styleClass="page-title"/>
             <Label text="Přehled provozu a nákladů vašich vozidel"
                    styleClass="page-subtitle"/>
-
         </VBox>
-
-
-        <!-- prihlaseny uzivatel -->
-
-        <VBox alignment="CENTER_RIGHT"
-              spacing="3">
-
-            <Label text="PŘIHLÁŠENÝ UŽIVATEL"
-                   styleClass="user-label"/>
-
-            <Label fx:id="userNameLabel"
-                   text="Uživatel"
-                   styleClass="user-name"/>
-
+        <VBox alignment="CENTER_RIGHT" spacing="3">
+            <Label text="PŘIHLÁŠENÝ UŽIVATEL" styleClass="user-label"/>
+            <Label fx:id="userNameLabel" text="Uživatel" styleClass="user-name"/>
         </VBox>
-
     </HBox>
-
-
-    <!-- statistiky -->
 
     <HBox spacing="15">
-
-        <VBox spacing="5"
-              HBox.hgrow="ALWAYS"
-              styleClass="stat-card">
-
-            <Label text="VOZIDLA"
-                   styleClass="stat-label"/>
-
-            <Label text="0"
-                   styleClass="stat-value"/>
-
-            <Label text="Celkem vozidel"
-                   styleClass="stat-description"/>
-
+        <VBox spacing="5" HBox.hgrow="ALWAYS" styleClass="stat-card">
+            <Label text="VOZIDLA" styleClass="stat-label"/>
+            <Label fx:id="vehicleCountLabel" text="0" styleClass="stat-value"/>
+            <Label text="Dostupná vozidla" styleClass="stat-description"/>
         </VBox>
-
-
-        <VBox spacing="5"
-              HBox.hgrow="ALWAYS"
-              styleClass="stat-card">
-
-            <Label text="TANKOVÁNÍ"
-                   styleClass="stat-label"/>
-
-            <Label text="0"
-                   styleClass="stat-value"/>
-
-            <Label text="Celkem záznamů"
-                   styleClass="stat-description"/>
-
+        <VBox spacing="5" HBox.hgrow="ALWAYS" styleClass="stat-card">
+            <Label text="TANKOVÁNÍ" styleClass="stat-label"/>
+            <Label fx:id="fuelingCountLabel" text="0" styleClass="stat-value"/>
+            <Label text="Celkem záznamů" styleClass="stat-description"/>
         </VBox>
-
-
-        <VBox spacing="5"
-              HBox.hgrow="ALWAYS"
-              styleClass="stat-card">
-
-            <Label text="NÁKLADY"
-                   styleClass="stat-label"/>
-
-            <Label text="0 Kč"
-                   styleClass="stat-value"/>
-
-            <Label text="Celkové náklady"
-                   styleClass="stat-description"/>
-
+        <VBox spacing="5" HBox.hgrow="ALWAYS" styleClass="stat-card">
+            <Label text="NÁKLADY" styleClass="stat-label"/>
+            <Label fx:id="totalCostsLabel" text="0 Kč" styleClass="stat-value"/>
+            <Label text="Celkové skutečné náklady" styleClass="stat-description"/>
         </VBox>
-
     </HBox>
 
-
-    <!-- sekce vozidla -->
-
-    <VBox spacing="12"
-          VBox.vgrow="ALWAYS">
-
-        <HBox alignment="CENTER_LEFT">
-
-            <Label text="Moje vozidla"
-                   styleClass="section-title"/>
-
+    <VBox spacing="12" VBox.vgrow="ALWAYS">
+        <HBox alignment="CENTER_LEFT" spacing="15">
+            <Label text="Moje vozidla" styleClass="section-title" HBox.hgrow="ALWAYS"/>
             <Button text="+ Přidat vozidlo"
                     styleClass="small-primary-button"
-                    HBox.hgrow="NEVER"/>
-
+                    onAction="#handleAddVehicle"/>
         </HBox>
 
+        <VBox fx:id="vehiclesContainer" spacing="12" VBox.vgrow="ALWAYS"/>
 
-        <!-- prazdny stav -->
-
-        <VBox alignment="CENTER"
+        <VBox fx:id="emptyState"
+              alignment="CENTER"
               spacing="12"
               VBox.vgrow="ALWAYS"
               styleClass="empty-state">
-
-            <Label text="🚗"
-                   styleClass="empty-icon"/>
-
-            <Label text="Zatím nemáte žádná vozidla"
-                   styleClass="empty-title"/>
-
+            <Label text="🚗" styleClass="empty-icon"/>
+            <Label text="Zatím nemáte žádná vozidla" styleClass="empty-title"/>
             <Label text="Přidejte své první vozidlo a začněte&#10;sledovat jeho provozní náklady a spotřebu."
-                   styleClass="empty-description"/>
-
+                   styleClass="empty-description"
+                   wrapText="true"/>
             <Button text="+  Přidat první vozidlo"
-                    styleClass="empty-button"/>
-
+                    styleClass="empty-button"
+                    onAction="#handleAddVehicle"/>
         </VBox>
-
     </VBox>
-
-
-    <!-- spodni informace -->
 
     <Label text="Vehicle Manager • Systematická správa provozních nákladů a spotřeby vozidel"
            styleClass="dashboard-hint"/>
-
 </VBox>

@@ -76,6 +76,8 @@ public class MainController {
 
             DashboardController controller = loader.getController();
             controller.setUsername(username);
+            controller.setOnAddVehicle(this::handleVehicles);
+            controller.setUserId(userId);
 
             contentArea.getChildren().setAll(view);
 

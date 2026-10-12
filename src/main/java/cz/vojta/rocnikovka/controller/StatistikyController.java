@@ -57,10 +57,17 @@ public class StatistikyController {
         monthlyChart.setAnimated(false);
         categoryChart.setAnimated(false);
         vehicleChart.setAnimated(false);
+
         monthlyChart.setLegendVisible(false);
         vehicleChart.setLegendVisible(false);
+
+        // popisky vyseci vypneme, aby se neprekryvaly
+        categoryChart.setLabelsVisible(false);
+        categoryChart.setLegendVisible(true);
+
         monthlyChart.setCategoryGap(12);
         vehicleChart.setCategoryGap(14);
+
         showEmptyState();
     }
 
